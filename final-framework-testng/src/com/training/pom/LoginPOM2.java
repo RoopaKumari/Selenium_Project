@@ -34,7 +34,9 @@ public class LoginPOM2 {
 	private WebElement confirm;
 	
 	@FindBy(xpath=("//*[@id=\"System_U70q4RMO\"]/form/div/div[2]/input"))
-	private WebElement Continue; 
+	private WebElement Continue;
+	
+
 	
 	@FindBy(xpath=("//div[@class='alert alert-success']"))
 	public WebElement Pwdsucess; 

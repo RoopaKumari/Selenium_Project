@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -73,6 +74,7 @@ public class FinaTestCase5 {
 	Thread.sleep(5000);
 	TestCase5POM.clickRemoveBtn();
 	Thread.sleep(10000);
+	
 	System.out.println("Shopping Cart status " +TestCase5POM.ShpngCartMsggetText());
 	System.out.println("Test is Passed with Expected output.");
 	Thread.sleep(5000);

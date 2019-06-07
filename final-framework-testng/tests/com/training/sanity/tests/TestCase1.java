@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -53,16 +54,21 @@ public class TestCase1 {
 		loginPOM2.clickChangePassword();
 		loginPOM2.sendpassword("Delhi23");
 		loginPOM2.sendconfirm("Delhi23");
+		Thread.sleep(5000);
 		loginPOM2.clickContinueBtn();
 		System.out.println("Password change status " +loginPOM2.PwdsucessgetText());
 		screenShot.captureScreenShot("First");
+
 		System.out.println("Test is Passed with Expected output.");
-    	Thread.sleep(7000);
+    
+		
 	}
+		
+	
     @AfterMethod
         public void tearDown() throws Exception {
    		Thread.sleep(1000);
-   	driver.quit();
+   driver.quit();
    
  }
 	

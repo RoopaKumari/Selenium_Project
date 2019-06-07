@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.TestCase3">
+      <class name="com.training.sanity.tests.Med_TC4">
         <methods>
-          <include name="EarringsSortByTest"/>
-          <include name="setUp"/>
           <include name="setUpBeforeClass"/>
+          <include name="ModifyCategoryTest"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.TestCase3 -->
+      </class> <!-- com.training.sanity.tests.Med_TC4 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
