@@ -15,15 +15,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.Med_TC4_POM;
+import com.training.pom.Admin_LoginCredentialsPOM;
+import com.training.pom.CategoriesPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class Med_TC4 {
+public class Edit_MetatagTitleTest_RTTC_039 {
+	//This test script verifies whether application allows admin to Edit Meta tag Title in categories page//
 	private WebDriver driver;
 	private String adminUrl;
-	private Med_TC4_POM Med_TC4_POM;
-	
+	private Admin_LoginCredentialsPOM Admin_LoginCredentialsPOM;
+	private CategoriesPOM CategoriesPOM;
+
 	
 
 	private static Properties properties;
@@ -39,7 +42,7 @@ public class Med_TC4 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Med_TC4_POM = new Med_TC4_POM(driver); 
+		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -49,35 +52,35 @@ public class Med_TC4 {
 	}
 	@Test (priority=1)
 	public void ModifyCategoryTest() throws InterruptedException, AWTException {
-		Med_TC4_POM.sendUsername("admin");
-		Med_TC4_POM.sendPassword("admin@123");
-		Med_TC4_POM.clickLoginBtn(); 
+		Admin_LoginCredentialsPOM.sendUsername("admin");
+		Admin_LoginCredentialsPOM.sendPassword("admin@123");
+		Admin_LoginCredentialsPOM.clickLoginBtn(); 
 		//Above are steps for login//	
 		
 		screenShot.captureScreenShot("Dashboard page validation sucess");
-		Med_TC4_POM.clickCatalog();
+		CategoriesPOM.clickCatalog();
 		screenShot.captureScreenShot("1Catalog links are displayed");
-		Med_TC4_POM.clickCategories();
+		CategoriesPOM.clickCategories();
 		screenShot.captureScreenShot("1Categories contents are displayed");
-		Med_TC4_POM.clickSelectedCategory();
+		CategoriesPOM.clickSelectedCategory();
 		screenShot.captureScreenShot("1Selected category checkbox is checked");
-		Med_TC4_POM.clickEditBtn();
+		CategoriesPOM.clickEditBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		
 	// Below is the new value for MetaTagTitle//	
-		Med_TC4_POM.sendMetaTagTitle("ORNAMENTS55555");
-		Med_TC4_POM.sendMetaTagDescription("ornaments for ladies");
+		CategoriesPOM.sendMetaTagTitle("ORNAMENTS55555");
+		CategoriesPOM.sendMetaTagDescription("ornaments for ladies");
 		screenShot.captureScreenShot("MetaTagTitle details are modified");
-		Med_TC4_POM.clickSaveBtn();
+		CategoriesPOM.clickSaveBtn();
 			
 	// Modified MegaTagTitle value is printed here//
-		System.out.println("MetaTagTitle Modification Status" +Med_TC4_POM.CategoryModifysucessMsggetText());
+		System.out.println("MetaTagTitle Modification Status" +CategoriesPOM.CategoryModifysucessMsggetText());
 		screenShot.captureScreenShot("Category Newly added Message is displayed");
 
 				
-		String Actual = Med_TC4_POM.CategoryModifysucessMsggetText();
+		String Actual = CategoriesPOM.CategoryModifysucessMsggetText();
 		String Expected = "Success";
-		assertTrue(Med_TC4_POM.CategoryModifysucessMsggetText().contains(Expected));
+		assertTrue(CategoriesPOM.CategoryModifysucessMsggetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
     
 			}

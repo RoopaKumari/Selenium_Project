@@ -15,15 +15,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-
-import com.training.pom.Med_TC5_POM;
+import com.training.pom.Admin_LoginCredentialsPOM;
+import com.training.pom.CategoriesPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class Med_TC5 {
+public class Delete_CategoryTest_RTTC_040 {
+	//This test script verifies whether application allows admin to delete multiple category from categories list//
 	private WebDriver driver;
 	private String adminUrl;
-	private Med_TC5_POM Med_TC5_POM;
+	private Admin_LoginCredentialsPOM Admin_LoginCredentialsPOM;
+	private CategoriesPOM CategoriesPOM;
 	
 	
 
@@ -40,7 +42,7 @@ public class Med_TC5 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Med_TC5_POM = new Med_TC5_POM(driver); 
+		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -50,20 +52,20 @@ public class Med_TC5 {
 	}
 	@Test (priority=1)
 	public void DeleteCategoryTest() throws InterruptedException, AWTException {
-		Med_TC5_POM.sendUsername("admin");
-		Med_TC5_POM.sendPassword("admin@123");
-		Med_TC5_POM.clickLoginBtn(); 
+		Admin_LoginCredentialsPOM.sendUsername("admin");
+		Admin_LoginCredentialsPOM.sendPassword("admin@123");
+		Admin_LoginCredentialsPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("Dashboard page validation sucess");
 		//Above are steps for login//	
 		
 		
-		Med_TC5_POM.clickCatalog();
+		CategoriesPOM.clickCatalog();
 		screenShot.captureScreenShot("2Catalog links are displayed");
-		Med_TC5_POM.clickCategories();
+		CategoriesPOM.clickCategories();
 		screenShot.captureScreenShot("2Categories contents are displayed");
-		Med_TC5_POM.clickSelectedCategory();
+		CategoriesPOM.clickSelectedCategory();
 		screenShot.captureScreenShot("2Selected category checkbox is checked");
-		Med_TC5_POM.clickDeleteBtn();
+		CategoriesPOM.clickDeleteBtn();
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Deleted category pop -up window is displayed");
 		
@@ -71,14 +73,14 @@ public class Med_TC5 {
 		driver.switchTo().alert().accept();
 				
 		//Below print message is to get confirmation that category is deleted//
-		System.out.println("Catalog delete status " +Med_TC5_POM.CategoryDeletesucessMsggetText());
+		System.out.println("Catalog delete status " +CategoriesPOM.CategoryDeletesucessMsggetText());
 		screenShot.captureScreenShot("Deleted category is removed from the category list");
 		System.out.println("Deleted category is removed from the category list");
 				
 		
-		String Actual = Med_TC5_POM.CategoryDeletesucessMsggetText();
+		String Actual = CategoriesPOM.CategoryDeletesucessMsggetText();
 		String Expected = "Success";
-		assertTrue(Med_TC5_POM.CategoryDeletesucessMsggetText().contains(Expected));
+		assertTrue(CategoriesPOM.CategoryDeletesucessMsggetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
 			}
 		

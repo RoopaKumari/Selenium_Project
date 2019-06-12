@@ -1,8 +1,11 @@
 package com.training.sanity.tests;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,14 +18,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.LoginPOM2;
+import com.training.pom.MyAccountPOM;
+import com.training.pom.User_LoginCredentialsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class TestCase1 {
+public class Valid_ChangePwdTest_RTTC_006 {
+	//This test script verifies whether application allows user to change the password in Change Your Password page.//
 	private WebDriver driver;
 	private String baseUrl;
-	private LoginPOM2 loginPOM2;
+	private User_LoginCredentialsPOM User_LoginCredentialsPOM;
+	private MyAccountPOM MyAccountPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -36,38 +42,40 @@ public class TestCase1 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		loginPOM2 = new LoginPOM2(driver); 
+		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
-		Thread.sleep(7000);
+		driver.manage().timeouts().implicitlyWait(70,TimeUnit.SECONDS);
 		
 	}
 	
 	
 	@Test (priority=1)
 	public void ValidChangePasswordTest() throws InterruptedException {
-		loginPOM2.sendemail("roopa.juvvala@in.ibm.com");
-		loginPOM2.sendPassword("Delhi22");
-		loginPOM2.clickLoginBtn(); 
-		loginPOM2.clickChangePassword();
-		loginPOM2.sendpassword("Delhi23");
-		loginPOM2.sendconfirm("Delhi23");
-		Thread.sleep(5000);
-		loginPOM2.clickContinueBtn();
-		System.out.println("Password change status " +loginPOM2.PwdsucessgetText());
+		User_LoginCredentialsPOM.sendemail("roopa.juvvala@in.ibm.com");
+		User_LoginCredentialsPOM.sendPassword("Delhi22");
+		User_LoginCredentialsPOM.clickLoginBtn(); 
+		MyAccountPOM.clickChangePassword();
+		MyAccountPOM.sendpassword("Delhi23");
+		MyAccountPOM.sendconfirm("Delhi23");
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		MyAccountPOM.clickContinueBtn();
+		System.out.println("Password change status " +MyAccountPOM.PwdsucessgetText());
 		screenShot.captureScreenShot("First");
 
+		String Actual = MyAccountPOM.PwdsucessgetText();
+		String Expected = "Sucess";
+		assertTrue(MyAccountPOM.PwdsucessgetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
-    
 		
 	}
 		
 	
     @AfterMethod
         public void tearDown() throws Exception {
-   		Thread.sleep(1000);
+    	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
    driver.quit();
    
  }

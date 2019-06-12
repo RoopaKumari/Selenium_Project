@@ -15,14 +15,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.Med_TC2_POM;
+import com.training.pom.Admin_LoginCredentialsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class Med_TC2 {
+public class Admin_InvalidCredsTest_RTTC_037 {
+	//This test script verifies whether application denies admin getting logged in upon entering invalid credentials in required fields//
 	private WebDriver driver; 
 	private String adminUrl; 
-	private Med_TC2_POM Med_TC2_POM;
+	private Admin_LoginCredentialsPOM Admin_LoginCredentialsPOM;
 	private static Properties properties; 
 	private ScreenShot screenShot; 
 
@@ -47,7 +48,7 @@ public class Med_TC2 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Med_TC2_POM = new Med_TC2_POM(driver); 
+		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -59,17 +60,17 @@ public class Med_TC2 {
 	
 	@Test(dataProvider="inputs")
 	public void Admin_InvalidCredentials_Test(String userName, String password) throws InterruptedException {
-		Med_TC2_POM.sendUsername(userName);
-		Med_TC2_POM.sendPassword(password);
-		Med_TC2_POM.clickLoginBtn(); 
+		Admin_LoginCredentialsPOM.sendUsername(userName);
+		Admin_LoginCredentialsPOM.sendPassword(password);
+		Admin_LoginCredentialsPOM.clickLoginBtn(); 
 		
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
-		System.out.println("Incorrect password error message is " +Med_TC2_POM.ErrorMsggetText());
+		System.out.println("Incorrect password error message is " +Admin_LoginCredentialsPOM.ErrorMsggetText());
 		screenShot.captureScreenShot("First");
 				
-		String Actual = Med_TC2_POM.ErrorMsggetText();
+		String Actual = Admin_LoginCredentialsPOM.ErrorMsggetText();
 		String Expected = "No match";
-		assertTrue(Med_TC2_POM.ErrorMsggetText().contains(Expected));
+		assertTrue(Admin_LoginCredentialsPOM.ErrorMsggetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");	
 	}
     	

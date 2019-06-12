@@ -20,14 +20,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.Med_TC1_POM;
+
+import com.training.pom.MyAccountPOM;
+import com.training.pom.User_LoginCredentialsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class Med_TC1 {
+public class Return_Ordered_ProductTest_RTTC_036 {
+	
+	//This test script verifies whether application allows the user to return ordered product//
+	
 	private WebDriver driver;
 	private String baseUrl;
-	private Med_TC1_POM Med_TC1_POM;
+	private MyAccountPOM MyAccountPOM;
+	private User_LoginCredentialsPOM User_LoginCredentialsPOM;
 	
 	
 
@@ -44,7 +50,7 @@ public class Med_TC1 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Med_TC1_POM = new Med_TC1_POM(driver); 
+		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -54,72 +60,72 @@ public class Med_TC1 {
 	
 	@Test (priority=1)
 	public void ReturnOrderTest() throws InterruptedException, AWTException {
-		Med_TC1_POM.sendemail("roopa.juvvala@in.ibm.com");
-		Med_TC1_POM.sendPassword("Delhi22");
-		Med_TC1_POM.clickLoginBtn(); 
+		User_LoginCredentialsPOM.sendemail("roopa.juvvala@in.ibm.com");
+		User_LoginCredentialsPOM.sendPassword("Delhi22");
+		User_LoginCredentialsPOM.clickLoginBtn(); 
 	//Above are steps for login//	
 		
 		
-		Med_TC1_POM.clickUser();
+		MyAccountPOM.clickUser();
 		screenShot.captureScreenShot("MyAccount_MyOrders_Logout are displayed");
 		System.out.println("MyAccount,MyOrders and Logout are displayed");
 		
 		
 
     /*Actions action = new Actions(this.driver);
-     action.moveToElement(Med_TC1_POM.User).click().build().perform();
+     action.moveToElement(MyAccountPOM.User).click().build().perform();
      action.sendKeys("MY ORDER", Keys.ARROW_DOWN);
      action.sendKeys("MY ORDER").click().build().perform();*/
 	/*Med_TC1_POM.clickMyOrders();*/
 	
 	// **********Added clickViewOrderHistory method as a workaround as MyOrders click have object identification problem***************//
 	
-		Med_TC1_POM.clickViewOrderHistry();
+		MyAccountPOM.clickViewOrderHistry();
 		screenShot.captureScreenShot("Order id_Customer_No of Products_ Status_Total_Date Added are displayed are displayed");
 		System.out.println("Order id, Customer, No of Products, Status, Total and Date Added are displayed are displayed");
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
-		Med_TC1_POM.clickViewBtn();
+		MyAccountPOM.clickViewBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Ordered Product details are displayed");
 		System.out.println("Ordered Product details are displayed");
 		
 	//Below steps are to return an order//
 		
-		Med_TC1_POM.clickReturnBtn();
+		MyAccountPOM.clickReturnBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Ordered information and Product Information details are displayed");
 		System.out.println("Ordered information and Product Information details are displayed");
 		
-		Med_TC1_POM.clickReasonRadionBtn();
+		MyAccountPOM.clickReasonRadionBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Dead on arrival Radio button is set");
 		System.out.println("Dead on arrival Radio button is set");
 		
-		Med_TC1_POM.clickPdtOpenedRadionBtn();
+		MyAccountPOM.clickPdtOpenedRadionBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Yes of Product is opened category is selected");
 		System.out.println("Yes of Product is opened category is selected");
 		
-		Med_TC1_POM.sendcomment("Product is faulty");
-		Med_TC1_POM.clickSubmitBtn(); 
+		MyAccountPOM.sendcomment("Product is faulty");
+		MyAccountPOM.clickSubmitBtn(); 
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		
 	//Below loc is to get the final text after successful return order//
 		
-		Med_TC1_POM.FinalTextgetText(); 
+		MyAccountPOM.FinalTextgetText(); 
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
-		System.out.println("Order return status " +Med_TC1_POM.FinalTextgetText());
+		System.out.println("Order return status " +MyAccountPOM.FinalTextgetText());
 		screenShot.captureScreenShot("Order return status captured");
 		
-		String PdReturnStatus = Med_TC1_POM.FinalTextgetText();
+		String PdReturnStatus = MyAccountPOM.FinalTextgetText();
 		String Expected = "Thanking";
-    	assertTrue(Med_TC1_POM.FinalTextgetText().contains(Expected));
+    	assertTrue(MyAccountPOM.FinalTextgetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
 	}
     	
     	@AfterMethod
         public void tearDown() throws Exception {
-   		Thread.sleep(1000);
+    		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
    		
    	driver.quit();
    	

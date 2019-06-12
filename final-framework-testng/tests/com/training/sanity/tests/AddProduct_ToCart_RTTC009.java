@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,14 +18,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.LoginPOM5;
+import com.training.pom.Shopping_PagePOM;
+import com.training.pom.User_LoginCredentialsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class TestCase4 {
+public class AddProduct_ToCart_RTTC009 {
+	//This test script verifies whether application allows the user to add product details into cart.//
 	private WebDriver driver;
 	private String baseUrl;
-	private LoginPOM5 LoginPOM5;
+	private User_LoginCredentialsPOM User_LoginCredentialsPOM;
+	private Shopping_PagePOM Shopping_PagePOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -38,41 +42,41 @@ public class TestCase4 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		LoginPOM5 = new LoginPOM5(driver); 
+		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
-		Thread.sleep(7000);
+		driver.manage().timeouts().implicitlyWait(70,TimeUnit.SECONDS);
 		
 	}
 	@Test (priority=1)
 	public void ViewCartTest() throws InterruptedException {
-		LoginPOM5.sendemail("roopa.juvvala@in.ibm.com");
-		LoginPOM5.sendPassword("Delhi22");
-		LoginPOM5.clickLoginBtn(); 
-		LoginPOM5.clickShop();
-		LoginPOM5.Earrings();
-		LoginPOM5.IntVitaelaculisMassa();
-		Thread.sleep(5000);
+		User_LoginCredentialsPOM.sendemail("roopa.juvvala@in.ibm.com");
+		User_LoginCredentialsPOM.sendPassword("Delhi22");
+		User_LoginCredentialsPOM.clickLoginBtn(); 
+		Shopping_PagePOM.clickShop();
+		Shopping_PagePOM.Earrings();
+		Shopping_PagePOM.IntVitaelaculisMassa();
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Integer Vitae laculis Massa1 details are displayed");
 		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
-		Thread.sleep(7000);
+		driver.manage().timeouts().implicitlyWait(70,TimeUnit.SECONDS);
 		
-		LoginPOM5.clickAddToCartBtn();
-	Thread.sleep(7000);
+		Shopping_PagePOM.clickAddToCartBtn();
+		driver.manage().timeouts().implicitlyWait(70,TimeUnit.SECONDS);
 	screenShot.captureScreenShot("Shopping Cart1 details were displayed");
-	LoginPOM5.CartBag();
-	Thread.sleep(7000);
-	LoginPOM5.ViewCart();
-	Thread.sleep(5000);
+	Shopping_PagePOM.CartBag();
+	driver.manage().timeouts().implicitlyWait(70,TimeUnit.SECONDS);
+	Shopping_PagePOM.ViewCart();
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 	screenShot.captureScreenShot("Complete product1 details were displayed");
 	System.out.println("View Cart details were displayed corrected, Hence the Test is passed");
 	}
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.quit();
 	}
 		

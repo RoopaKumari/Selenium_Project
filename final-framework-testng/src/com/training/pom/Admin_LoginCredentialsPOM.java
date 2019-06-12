@@ -5,13 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Med_TC2_POM {
+public class Admin_LoginCredentialsPOM {
+
+
 private WebDriver driver; 
 	
-	public Med_TC2_POM(WebDriver driver) {
+	public Admin_LoginCredentialsPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
+	
 	@FindBy(id="input-username")
 	private WebElement Username;
 
@@ -36,7 +39,6 @@ private WebDriver driver;
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
 }
-	
 	@FindBy(xpath=("//div[@class='alert alert-danger']"))
 	public WebElement ErrorMsg; 
 	
@@ -44,3 +46,4 @@ private WebDriver driver;
 		  return this.ErrorMsg.getText();
 			}
 }
+	

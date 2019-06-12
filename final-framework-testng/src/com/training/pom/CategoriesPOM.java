@@ -1,46 +1,19 @@
 package com.training.pom;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Med_TC3_POM {
+public class CategoriesPOM {
 private WebDriver driver; 
 	
-	public Med_TC3_POM(WebDriver driver) {
+	public CategoriesPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="input-username")
-	private WebElement Username;
-
-	public void sendUsername(String Username) {
-		this.Username.clear();
-		this.Username.sendKeys(Username);
-	}
-
-
-	@FindBy(id="input-password")
-	private WebElement password;
-
-	public void sendPassword(String password) {
-		this.password.clear(); 
-		this.password.sendKeys(password); 
-	}
-
-
-	@FindBy(xpath=("//*[@id=\"content\"]/div/div/div/div/div[2]/form/div[3]/button"))
-	private WebElement loginBtn; 
-
-	public void clickLoginBtn() {
-		this.loginBtn.click(); 
-}
-	
-
 	@FindBy(xpath=("//a//i[@class='fa fa-tags fw']"))
 	private WebElement Catalog; 
 
@@ -112,5 +85,46 @@ private WebDriver driver;
 	public String CategoryAddsucessMsggetText() {
 		  return this.CategoryAddsucessMsg.getText();
 			}
-		
+	@FindBy(xpath=("//tbody//tr[2]//td[1]"))
+	public WebElement SelectedCategory; 
+	
+	public void clickSelectedCategory() {
+		 Actions action = new Actions(driver);
+		this.SelectedCategory.click();
+			 
 }
+	
+	@FindBy(xpath=("//a//i[@class='fa fa-pencil']"))
+	private WebElement EditBtn; 
+
+	public void clickEditBtn() {
+		 Actions action = new Actions(driver);
+			action.moveToElement(EditBtn).click().build().perform();
+			 
+}
+	
+	
+	@FindBy(xpath=("//div[@class='alert alert-success']"))
+	public WebElement CategoryModifysucessMsg;	
+	
+	public String CategoryModifysucessMsggetText() {
+		  return this.CategoryModifysucessMsg.getText();
+			}
+	
+	@FindBy(xpath=("//div//i[@class='fa fa-trash-o']"))
+	public WebElement DeleteBtn;
+	
+	public void clickDeleteBtn() {
+		 Actions action = new Actions(driver);
+			action.moveToElement(DeleteBtn).click().build().perform();
+}
+	
+	@FindBy(xpath=("//div[@class='alert alert-success']"))
+	public WebElement CategoryDeletesucessMsg;	
+	
+	public String CategoryDeletesucessMsggetText() {
+		  return this.CategoryDeletesucessMsg.getText();
+
+}
+}
+

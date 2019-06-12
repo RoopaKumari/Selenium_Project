@@ -15,15 +15,19 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
+import com.training.pom.Admin_LoginCredentialsPOM;
+import com.training.pom.CategoriesPOM;
 
-import com.training.pom.Med_TC3_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class Med_TC3 {
+public class AddCategoryTest_RTTC_038 {
+	//This test script verifies whether application allows admin to add category in categories page//
+	
 	private WebDriver driver;
 	private String adminUrl;
-	private Med_TC3_POM Med_TC3_POM;
+	private Admin_LoginCredentialsPOM Admin_LoginCredentialsPOM;
+	private CategoriesPOM CategoriesPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,7 +41,7 @@ public class Med_TC3 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Med_TC3_POM = new Med_TC3_POM(driver); 
+		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -47,33 +51,33 @@ public class Med_TC3 {
 	}
 	@Test (priority=1)
 	public void AddCategoryTest() throws InterruptedException, AWTException {
-		Med_TC3_POM.sendUsername("admin");
-		Med_TC3_POM.sendPassword("admin@123");
-		Med_TC3_POM.clickLoginBtn();
+		Admin_LoginCredentialsPOM.sendUsername("admin");
+		Admin_LoginCredentialsPOM.sendPassword("admin@123");
+		Admin_LoginCredentialsPOM.clickLoginBtn();
 		screenShot.captureScreenShot("Dashboard page validation sucess");
 		//Above are steps for login//	
 		
 		
-		Med_TC3_POM.clickCatalog();
+		CategoriesPOM.clickCatalog();
 		screenShot.captureScreenShot("Catalog links are displayed");
-		Med_TC3_POM.clickCategories();
+		CategoriesPOM.clickCategories();
 		screenShot.captureScreenShot("Categories contents are displayed");
-		Med_TC3_POM.clickAddNewBtn();
+		CategoriesPOM.clickAddNewBtn();
 		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		screenShot.captureScreenShot("Add Category page is opened");
-		Med_TC3_POM.sendCategoryName("ORNAMENTS");
-		Med_TC3_POM.sendCategoryDescription("ornaments for ladies");
-		Med_TC3_POM.sendMetaTagTitle("ORNAMENTS");
-		Med_TC3_POM.sendMetaTagDescription("ornaments for ladies");
+		CategoriesPOM.sendCategoryName("ORNAMENTS");
+		CategoriesPOM.sendCategoryDescription("ornaments for ladies");
+		CategoriesPOM.sendMetaTagTitle("ORNAMENTS");
+		CategoriesPOM.sendMetaTagDescription("ornaments for ladies");
 		screenShot.captureScreenShot("New Category details are displayed");
-		Med_TC3_POM.clickSaveBtn();
-		System.out.println("Newly added Categories status " +Med_TC3_POM.CategoryAddsucessMsggetText());
+		CategoriesPOM.clickSaveBtn();
+		System.out.println("Newly added Categories status " +CategoriesPOM.CategoryAddsucessMsggetText());
 		screenShot.captureScreenShot("Category Newly added Message is displayed");
 	
 		
-		String Actual = Med_TC3_POM.CategoryAddsucessMsggetText();
+		String Actual = CategoriesPOM.CategoryAddsucessMsggetText();
 		String Expected = "Success";
-		assertTrue(Med_TC3_POM.CategoryAddsucessMsggetText().contains(Expected));
+		assertTrue(CategoriesPOM.CategoryAddsucessMsggetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
 		
     		}
