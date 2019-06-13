@@ -1,0 +1,11 @@
+<suite name="Mediumlevel TestScripts">
+<test name = "Retail Tests2">
+<classes>
+<class name="com.training.sanity.tests.Return_Ordered_ProductTest_RTTC_036" />
+<class name="com.training.sanity.tests.Admin_InvalidCredsTest_RTTC_037" />
+<class name="com.training.sanity.tests.AddCategoryTest_RTTC_038" />
+<class name="com.training.sanity.tests.Edit_MetatagTitleTest_RTTC_039" />
+<class name="com.training.sanity.tests.Delete_CategoryTest_RTTC_040" />
+</classes>
+</test>
+</suite>

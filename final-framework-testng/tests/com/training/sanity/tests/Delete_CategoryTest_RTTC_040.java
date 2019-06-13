@@ -43,6 +43,7 @@ public class Delete_CategoryTest_RTTC_040 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
+		CategoriesPOM = new CategoriesPOM(driver);
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 

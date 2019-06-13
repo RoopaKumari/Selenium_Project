@@ -17,7 +17,6 @@ import org.testng.annotations.Test;
 import com.training.generics.ScreenShot;
 import com.training.pom.Admin_LoginCredentialsPOM;
 import com.training.pom.CategoriesPOM;
-
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -42,6 +41,7 @@ public class AddCategoryTest_RTTC_038 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
+		CategoriesPOM = new CategoriesPOM(driver); 
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -55,9 +55,7 @@ public class AddCategoryTest_RTTC_038 {
 		Admin_LoginCredentialsPOM.sendPassword("admin@123");
 		Admin_LoginCredentialsPOM.clickLoginBtn();
 		screenShot.captureScreenShot("Dashboard page validation sucess");
-		//Above are steps for login//	
-		
-		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		CategoriesPOM.clickCatalog();
 		screenShot.captureScreenShot("Catalog links are displayed");
 		CategoriesPOM.clickCategories();
@@ -80,7 +78,7 @@ public class AddCategoryTest_RTTC_038 {
 		assertTrue(CategoriesPOM.CategoryAddsucessMsggetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
 		
-    		}
+	}
 		
 	@AfterMethod
         public void tearDown() throws Exception {

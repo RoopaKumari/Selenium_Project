@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Mediumlevel TestScripts]">
-  <test thread-count="5" name="Retail Tests(failed)">
+  <test thread-count="5" name="Retail Tests2(failed)">
     <classes>
-      <class name="com.training.sanity.tests.Med_TC1">
+      <class name="com.training.sanity.tests.Return_Ordered_ProductTest_RTTC_036">
         <methods>
-          <include name="setUpBeforeClass"/>
-          <include name="setUp"/>
           <include name="ReturnOrderTest"/>
+          <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="setUpBeforeClass"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.Med_TC1 -->
+      </class> <!-- com.training.sanity.tests.Return_Ordered_ProductTest_RTTC_036 -->
     </classes>
-  </test> <!-- Retail Tests(failed) -->
+  </test> <!-- Retail Tests2(failed) -->
 </suite> <!-- Failed suite [Mediumlevel TestScripts] -->

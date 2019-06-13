@@ -14,6 +14,7 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	
+	
 	@FindBy(xpath=("//a//i[@class='fa fa-tags fw']"))
 	private WebElement Catalog; 
 

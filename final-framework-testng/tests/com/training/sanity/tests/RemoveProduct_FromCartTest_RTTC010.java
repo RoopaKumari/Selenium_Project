@@ -48,6 +48,7 @@ public class RemoveProduct_FromCartTest_RTTC010 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
+		Shopping_PagePOM = new Shopping_PagePOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 

@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
+import com.training.pom.MyAccountPOM;
 import com.training.pom.Shopping_PagePOM;
 import com.training.pom.User_LoginCredentialsPOM;
 import com.training.utility.DriverFactory;
@@ -43,6 +44,7 @@ public class AddProduct_ToCart_RTTC009 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
+		Shopping_PagePOM = new Shopping_PagePOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 

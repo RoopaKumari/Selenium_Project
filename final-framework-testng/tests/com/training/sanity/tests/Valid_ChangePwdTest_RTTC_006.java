@@ -43,6 +43,7 @@ public class Valid_ChangePwdTest_RTTC_006 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
+		MyAccountPOM = new MyAccountPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 

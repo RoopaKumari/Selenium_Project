@@ -1,0 +1,11 @@
+<suite name="Simplelevel TestScripts">
+<test name = "Retail Tests1">
+<classes>
+<class name="com.training.sanity.tests.Valid_ChangePwdTest_RTTC_006" />
+<class name="com.training.sanity.tests.Invalid_ChangePwdTest_RTTC_007" />
+<class name="com.training.sanity.tests.Search_ProductsTest_RTTC_008" />
+<class name="com.training.sanity.tests.AddProduct_ToCart_RTTC009" />
+<class name="com.training.sanity.tests.RemoveProduct_FromCartTest_RTTC010" />
+</classes>
+</test>
+</suite>

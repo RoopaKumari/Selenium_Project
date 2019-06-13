@@ -43,6 +43,7 @@ public class Edit_MetatagTitleTest_RTTC_039 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		Admin_LoginCredentialsPOM = new Admin_LoginCredentialsPOM(driver); 
+		CategoriesPOM = new CategoriesPOM(driver);
 		adminUrl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 

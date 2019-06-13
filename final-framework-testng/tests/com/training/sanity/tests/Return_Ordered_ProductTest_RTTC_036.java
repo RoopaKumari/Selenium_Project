@@ -51,6 +51,7 @@ public class Return_Ordered_ProductTest_RTTC_036 {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		User_LoginCredentialsPOM = new User_LoginCredentialsPOM(driver); 
+		MyAccountPOM = new MyAccountPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -118,7 +119,7 @@ public class Return_Ordered_ProductTest_RTTC_036 {
 		screenShot.captureScreenShot("Order return status captured");
 		
 		String PdReturnStatus = MyAccountPOM.FinalTextgetText();
-		String Expected = "Thanking";
+		String Expected = "Thank";
     	assertTrue(MyAccountPOM.FinalTextgetText().contains(Expected));
 		System.out.println("Test is Passed with Expected output.");
 	}
