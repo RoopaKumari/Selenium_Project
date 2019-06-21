@@ -43,6 +43,10 @@ public class ELearningDAO {
 				LoginBean temp = new LoginBean(); 
 				temp.setUserName(gc.rs1.getString(1));
 				temp.setPassword(gc.rs1.getString(2));
+				temp.setCategoryName(gc.rs1.getString(3));
+				temp.setCategoryDescription(gc.rs1.getString(4));
+				temp.setMetaTagTitle(gc.rs1.getString(5));
+				temp.setMetaTagDescription(gc.rs1.getString(6));
 
 				list.add(temp); 
 				

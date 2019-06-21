@@ -1,47 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Simplelevel TestScripts]">
-  <test thread-count="5" name="Retail Tests1(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.Search_ProductsTest_RTTC_008">
+      <class name="com.training.sanity.tests.DatabaseTest_AddCategory_RTTC066">
         <methods>
-          <include name="setUpBeforeClass"/>
-          <include name="setUp"/>
-          <include name="EarringsSortByTest"/>
-        </methods>
-      </class> <!-- com.training.sanity.tests.Search_ProductsTest_RTTC_008 -->
-      <class name="com.training.sanity.tests.Invalid_ChangePwdTest_RTTC_007">
-        <methods>
-          <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="setUpBeforeClass"/>
-          <include name="InvalidChangePasswordTest"/>
-        </methods>
-      </class> <!-- com.training.sanity.tests.Invalid_ChangePwdTest_RTTC_007 -->
-      <class name="com.training.sanity.tests.AddProduct_ToCart_RTTC009">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="ViewCartTest"/>
-          <include name="setUpBeforeClass"/>
-        </methods>
-      </class> <!-- com.training.sanity.tests.AddProduct_ToCart_RTTC009 -->
-      <class name="com.training.sanity.tests.RemoveProduct_FromCartTest_RTTC010">
-        <methods>
-          <include name="setUpBeforeClass"/>
-          <include name="RemoveCartTest"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- com.training.sanity.tests.RemoveProduct_FromCartTest_RTTC010 -->
-      <class name="com.training.sanity.tests.Valid_ChangePwdTest_RTTC_006">
-        <methods>
-          <include name="ValidChangePasswordTest"/>
+          <include name="DatabaseTest_AddCategory_RTTC066" invocation-numbers="0"/>
           <include name="setUpBeforeClass"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.Valid_ChangePwdTest_RTTC_006 -->
+      </class> <!-- com.training.sanity.tests.DatabaseTest_AddCategory_RTTC066 -->
     </classes>
-  </test> <!-- Retail Tests1(failed) -->
-</suite> <!-- Failed suite [Simplelevel TestScripts] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

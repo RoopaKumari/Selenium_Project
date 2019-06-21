@@ -19,19 +19,22 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *      access.
  */
 public class ApachePOIExcelRead {
-	public  String [][] getExcelContent(String fileName) {
-		int rowCount =0; 
+	public  String [][] getExcelContent(String fileName, String sheetName) {
+				int rowCount =0; 
 		String [][] list1 = null; 
 		
 		try {
 			System.out.println("File Name Got " + fileName);
 			FileInputStream file = new FileInputStream(new File(fileName));
+			
 
 			// Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
 			// Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
+			//XSSFSheet sheet = workbook.getSheetAt(0);
+			//XSSFSheet sheet = workbook.getSheetAt(1);
+			XSSFSheet sheet = workbook.getSheet(sheetName);
 			
 			int rowTotal = sheet.getLastRowNum();
 
@@ -59,10 +62,12 @@ public class ApachePOIExcelRead {
 					Cell cell = cellIterator.next();
 					// Check the cell type and format accordingly
 					switch (cell.getCellType()) {
-
+					
+					case Cell.CELL_TYPE_BLANK:
+						tempList1[cellCount] = (cell.getStringCellValue());
+	                    break;
 					case Cell.CELL_TYPE_NUMERIC:
-						
-						if(((Double) cell.getNumericCellValue()).toString()!=null){
+							if(((Double) cell.getNumericCellValue()).toString()!=null){
 							tempList1[cellCount] = ((Double) cell.getNumericCellValue()).toString(); 
 						} 
 						break;
@@ -88,14 +93,19 @@ public class ApachePOIExcelRead {
 		return list1;
 	}
 
-	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
-		
-		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
+	/*public static void main(String[] args) {
+		//String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
+		String fileName = "C:\\Users\\IBM_ADMIN\\Desktop\\Selenium Traning\\Project\\ComplexTestcases/Testdata.xlsx";
+		String sheetName1 ="Sheet1";
+		String sheetName2 ="Sheet2";
+		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName,sheetName1)){
 			for(String  tt : temp){
 				System.out.println(tt);
 			}
-		}
+			
+		
+			
+		}*/
 
-	}
+
 }

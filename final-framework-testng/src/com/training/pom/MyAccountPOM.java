@@ -33,7 +33,7 @@ private WebDriver driver;
 		this.ViewOrderHistry.click(); 
 	}
 
-
+	
 	/*@FindBy(xpath=("//*[contains(text(),'MY ORDERS')]"))
 	public WebElement MyOrders;
 
@@ -132,10 +132,10 @@ public void sendconfirm(String Confirm) {
 	}
 	
 	@FindBy(xpath=("//*[@id=\"System_U70q4RMO\"]/form/div/div[2]/input"))
-	private WebElement Continue;
+	private WebElement ContinueBtn;
 	
 public void clickContinueBtn() {
-		this.Continue.click(); 
+		this.ContinueBtn.click(); 
 	}
 	
 	@FindBy(xpath=("//div[@class='alert alert-success']"))

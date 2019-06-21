@@ -77,10 +77,11 @@ public class Return_Ordered_ProductTest_RTTC_036 {
      action.moveToElement(MyAccountPOM.User).click().build().perform();
      action.sendKeys("MY ORDER", Keys.ARROW_DOWN);
      action.sendKeys("MY ORDER").click().build().perform();*/
-	/*Med_TC1_POM.clickMyOrders();*/
+	/*MyAccountPOM.clickMyOrders();*/
 	
 	// **********Added clickViewOrderHistory method as a workaround as MyOrders click have object identification problem***************//
-	
+		
+		//MyAccountPOM.clickMyOrders();
 		MyAccountPOM.clickViewOrderHistry();
 		screenShot.captureScreenShot("Order id_Customer_No of Products_ Status_Total_Date Added are displayed are displayed");
 		System.out.println("Order id, Customer, No of Products, Status, Total and Date Added are displayed are displayed");

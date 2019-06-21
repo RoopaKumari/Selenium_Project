@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.Return_Ordered_ProductTest_RTTC_036">
+      <class name="com.training.sanity.tests.DatabaseTest_AddCategory_RTTC066">
         <methods>
-          <include name="ReturnOrderTest"/>
-          <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="DatabaseTest_AddCategory_RTTC066" invocation-numbers="0"/>
           <include name="setUpBeforeClass"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.Return_Ordered_ProductTest_RTTC_036 -->
+      </class> <!-- com.training.sanity.tests.DatabaseTest_AddCategory_RTTC066 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

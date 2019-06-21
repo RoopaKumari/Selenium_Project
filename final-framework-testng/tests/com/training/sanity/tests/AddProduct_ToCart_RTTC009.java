@@ -53,7 +53,7 @@ public class AddProduct_ToCart_RTTC009 {
 		
 	}
 	@Test (priority=1)
-	public void ViewCartTest() throws InterruptedException {
+	public void AddProduct_ToCart() throws InterruptedException {
 		User_LoginCredentialsPOM.sendemail("roopa.juvvala@in.ibm.com");
 		User_LoginCredentialsPOM.sendPassword("Delhi22");
 		User_LoginCredentialsPOM.clickLoginBtn(); 
